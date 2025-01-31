@@ -1,1 +1,1 @@
-# belajar_asm
+# Repo untuk belajar assembly
