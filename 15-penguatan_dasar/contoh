@@ -1,0 +1,138 @@
+📝 Level 1 - Dasar
+
+    Copy nilai ke register
+
+mov eax, 0x12345678
+
+    EAX langsung diisi 0x12345678, jadi jawabannya:
+    EAX = 0x12345678
+
+Gunakan register 16-bit
+
+mov ax, 0xABCD
+
+    AX itu bagian bawah dari EAX, jadi setelah ini:
+    EAX = 0x0000ABCD
+
+Gunakan register 8-bit
+
+    mov ah, 0x12
+    mov al, 0x34
+
+        AX terdiri dari AH dan AL, jadi hasilnya:
+        AX = 0x1234
+
+📝 Level 2 - Operasi Register
+
+    Menukar nilai register
+
+mov eax, 0x11111111
+mov ebx, 0x22222222
+xchg eax, ebx
+
+    XCHG menukar nilai EAX dan EBX, jadi:
+    EAX = 0x22222222, EBX = 0x11111111
+
+Menyalin nilai dari satu register ke register lain
+
+mov ecx, 0x1234
+mov edx, ecx
+
+    EDX menyalin isi ECX, jadi:
+    EDX = 0x00001234
+
+Menyalin nilai dari register kecil ke register besar
+
+    mov al, 0x55
+    movzx eax, al
+
+        MOVZX zero-extend, jadi:
+        EAX = 0x00000055
+
+📝 Level 3 - MOVZX vs MOVSX
+
+    Gunakan MOVZX untuk angka positif
+
+mov al, 0x7F
+movzx eax, al
+
+    0x7F dalam 8-bit adalah 127 (positif).
+    MOVZX akan zero-extend, jadi:
+    EAX = 0x0000007F
+
+Gunakan MOVSX untuk angka negatif
+
+    mov al, 0xFF
+    movsx eax, al
+
+        0xFF dalam 8-bit adalah -1 (signed).
+        MOVSX akan sign-extend, jadi:
+        EAX = 0xFFFFFFFF (-1 dalam 32-bit)
+
+📝 Level 4 - Operasi Matematika
+
+    Menambah nilai ke register
+
+mov eax, 10
+add eax, 5
+
+    EAX awalnya 10, ditambah 5, jadi:
+    EAX = 15
+
+Mengurangi nilai dari register
+
+mov ebx, 20
+sub ebx, 8
+
+    EBX awalnya 20, dikurangi 8, jadi:
+    EBX = 12
+
+Mengalikan register
+
+    mov eax, 2
+    mov ebx, 3
+    imul eax, ebx
+
+        EAX = 2 * 3, jadi:
+        EAX = 6
+
+📝 Level 5 - Manipulasi Stack & Pointer
+
+    Push & Pop Stack
+
+mov eax, 100
+push eax
+mov eax, 50
+pop eax
+
+    PUSH menyimpan 100 ke stack.
+    MOV mengubah EAX jadi 50.
+    POP mengambil kembali 100, jadi:
+    EAX = 100
+
+Menggunakan Stack Pointer (ESP)
+
+    push 10
+    push 20
+    pop eax
+
+        20 dimasukkan dulu, lalu 10.
+        POP mengambil yang terakhir masuk (20), jadi:
+        EAX = 20
+
+📝 Level 6 - Memory & Register
+
+    Menggunakan ESI sebagai Source Index
+
+mov esi, 0x1234
+mov edi, esi
+
+    EDI menyalin isi ESI, jadi:
+    EDI = 0x00001234
+
+Menggunakan EBP sebagai Base Pointer
+
+mov ebp, 0xABCDEF
+
+    EBP langsung diisi 0xABCDEF, jadi:
+    EBP = 0x00ABCDEF
